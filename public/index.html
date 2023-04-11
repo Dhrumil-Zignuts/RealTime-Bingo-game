@@ -72,9 +72,14 @@
                                 required>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">New Room Name:</label>
-                            <input type="text" class="form-control" id="createRoomName" aria-describedby="emailHelp"
+                            <label for="exampleInputEmail1" class="form-label">No. of Players :</label>
+                            <input type="number" min="0" max="15" placeholder="Count" class="form-control" id="userCount" aria-describedby="emailHelp"
                                 required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">New Room Name:</label>
+                            <input type="text" class="form-control" value="" id="createRoomName" aria-describedby="emailHelp"
+                                required disabled>
                         </div>
                         <div class="mb-3 d-flex justify-content-end">
                             <button type="button" id="createRoom" class="btn btn-primary">Create</button>
@@ -115,34 +120,30 @@
     </div>
 
     <div id="game" style="display: none;">
-        <div class="container justify-content-around" style="height: 100vh; display: flex; padding-top: 75px;">
-            <div class="main-grid">
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
-                <button class="btn btn-link text-decoration-none blocks">D</button>
+
+        <!-- Winner Div  -->
+        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Game</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick={location.reload(true)} ></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 id="winner"></h1>
+                    </div>
+                </div>
             </div>
+        </div>
+        
+        <div class="container justify-content-around" style="height: 100vh; display: flex; padding-top: 75px;">
+            <div>
+                <div class="main-grid">
+                </div>
+                <h1 id="bingoCount" style="margin-top: 50px; letter-spacing: 35px; text-align: center; font-weight: 900;"></h1>
+                <input type="text" id="jugad" value="" style="display: none;">
+            </div>
+            
             <div class="text-center">
                 <h3>Total Player Join the Game</h3>
                 <div class="Actions">
@@ -167,60 +168,7 @@
                                 <th scope="col-10">Moves</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Mark</td>
-                                <td>25</td>
-                            </tr>
-
+                        <tbody id="tableMoves">
                         </tbody>
                     </table>
                 </div>
@@ -233,6 +181,9 @@
 
     <script src="socket.io/socket.io.js"></script>
     <script src="/index.js"></script>
+    <script>
+        $('#createRoomName').val((Math.random() + 1).toString(36).substring(7))
+    </script>
 </body>
 
 </html>
