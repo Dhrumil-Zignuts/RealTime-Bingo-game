@@ -73,13 +73,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">No. of Players :</label>
-                            <input type="number" min="0" max="15" placeholder="Count" class="form-control" id="userCount" aria-describedby="emailHelp"
-                                required>
+                            <input type="number" min="0" max="15" placeholder="Count" class="form-control"
+                                id="userCount" aria-describedby="emailHelp" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">New Room Name:</label>
-                            <input type="text" class="form-control" value="" id="createRoomName" aria-describedby="emailHelp"
-                                required disabled>
+                            <input type="text" class="form-control" value="" id="createRoomName"
+                                aria-describedby="emailHelp" required disabled>
                         </div>
                         <div class="mb-3 d-flex justify-content-end">
                             <button type="button" id="createRoom" class="btn btn-primary">Create</button>
@@ -127,7 +127,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Create Game</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick={location.reload(true)} ></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick={location.reload(true)}></button>
                     </div>
                     <div class="modal-body">
                         <h3 id="winner"></h3>
@@ -135,15 +136,13 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="container justify-content-around" style="height: 100vh; display: flex; padding-top: 75px;">
             <div>
                 <div class="main-grid">
                 </div>
                 <h1 id="bingoCount" style="margin-top: 50px; letter-spacing: 35px; text-align: center; font-weight: 900;"></h1>
-                <input type="text" id="jugad" value="" style="display: none;">
             </div>
-            
             <div class="text-center">
                 <h3>Total Player Join the Game</h3>
                 <div class="Actions">
@@ -157,6 +156,7 @@
                         </tbody>
                     </table>
                 </div>
+                <h1 id="playerTurn"></h1>
             </div>
             <div class="text-center">
                 <h3>player's Actions</h3>

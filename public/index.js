@@ -53,9 +53,8 @@ $(document).ready(function () {
         $('#exampleModal2').modal('hide')
         $('#home').css('display', 'none')
         $('#game').css('display', 'block')
-        $('#jugad').val(JSON.stringify(users))
-
-
+        // $('#jugad').val(JSON.stringify(users))
+        $('#playerTurn').html(`${myUsers[turn].username}'s Turn`)
     })
 
 
@@ -72,7 +71,6 @@ $(document).ready(function () {
             let j = Math.floor(Math.random() * (i + 1));
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-        // 
 
         for (let i = 0; i < arr.length; i++) {
             $('.main-grid').append(`
@@ -143,6 +141,7 @@ $(document).ready(function () {
     socket.on('user-move', (data) => {
         console.log('data: ', data);
         turn = data.a
+        $('#playerTurn').html(`${myUsers[turn].username}'s Turn`)
         $(`.${data.id}`).toggleClass('btn-secondary btn-success');
         // $(`.${data.id}`).prop('disabled', true);
         // 

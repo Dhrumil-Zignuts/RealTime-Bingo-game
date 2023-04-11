@@ -26,9 +26,15 @@ io.on('connection', (socket) => {
             socketID : socket.id
         }
         try{
-            const user = await MyModel.create(data)
-            const users = await MyModel.find({ room : room})
-            io.to(room).emit('room-created', users)
+            const findUser = await MyModel.findOne({room:room, username : username})
+            if(!findUser){
+                const user = await MyModel.create(data)
+                const users = await MyModel.find({ room : room})
+                io.to(room).emit('room-created', users)
+            }
+            else{
+                console.log(`Error Come due to Same Username`);
+            }
         }catch(err){
             console.log(err);
         }
@@ -42,9 +48,14 @@ io.on('connection', (socket) => {
             socketID : socket.id
         }
         try{
-            const user = await MyModel.create(data)
-            const users = await MyModel.find({ room : room})
-            io.to(room).emit('room-joined', users)
+            const findUser = await MyModel.findOne({room:room, username : username})
+            if(!findUser){
+                const user = await MyModel.create(data)
+                const users = await MyModel.find({ room : room})
+                io.to(room).emit('room-joined', users)
+            }else{
+                console.log(`Error Come due to Same Username`);
+            }
         }catch(err){
             console.log(err);
         }
